@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const driver = require('./src/api/driver/driver.routes');
+const route = require('./src/api/route/route.routes');
 
 const port = 3000;
 const app = express();
@@ -26,5 +27,6 @@ async function main() {
 }
 
 app.use('/api/drivers', driver);
+app.use('/api/route', route);
 app.use('/api', (err,res)=>res.send('Funciona'));
 app.listen(port,()=>{console.log('Escucha en puerto:'+port)})

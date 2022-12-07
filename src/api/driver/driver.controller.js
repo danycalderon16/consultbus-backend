@@ -39,8 +39,6 @@ exports.create = (req, res) => {
     );
 }
 
-
-
 exports.update = async(req,res) =>{
     try {
         const driver = await Driver.findById(req.params.id).exec();
