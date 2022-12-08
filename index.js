@@ -11,8 +11,8 @@ const app = express();
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE, PATCH');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE, PATCH');
     next();
 });
 
@@ -28,5 +28,5 @@ async function main() {
 
 app.use('/api/drivers', driver);
 app.use('/api/route', route);
-app.use('/api', (err,res)=>res.send('Funciona'));
+// app.use('/api', (err,res)=>res.send('Funciona'));
 app.listen(port,()=>{console.log('Escucha en puerto:'+port)})

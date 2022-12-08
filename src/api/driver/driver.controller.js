@@ -19,10 +19,8 @@ exports.getOne = (req,res)=>{
     console.log(19,objectId);
     Driver.findById(objectId, (err, docs)=> {
         if (err){
-            console.log(22,err);
             return res.send(err)
         }        else{
-            console.log(26,docs);
             return res.send(docs);
         }
     });
@@ -43,6 +41,7 @@ exports.update = async(req,res) =>{
     try {
         const driver = await Driver.findById(req.params.id).exec();
         const newDriver = req.body;
+        console.log(newDriver);
         Object.assign(driver, newDriver);
         driver.save();
         res.status(201).json(driver);

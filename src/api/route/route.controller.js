@@ -39,17 +39,16 @@ exports.update = async (req, res) => {
     try {
         const Route = await Route.findById(req.params.id).exec();
         const newRoute = req.body;
+        console.log(newRoute);
         Object.assign(Route, newRoute);
         Route.save();
-        res.status(201).json(Route);
+        res.status(201).json(newRoute);
     } catch (error) {
         return res.send("Chofer no encontrado");
     }
 }
 
 exports.delete = async (req, res) => {
-
-    console.log(52);
     const id = req.params.id;
     const objectId = new mongoose.Types.ObjectId(id);
     Route.findByIdAndDelete(objectId,(err,data)=>{
