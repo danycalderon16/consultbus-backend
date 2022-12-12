@@ -51,13 +51,11 @@ exports.update = async(req,res) =>{
 }
 
 exports.delete = async(req,res) =>{
-    try {
-        const driver = await Driver.findById(req.params.id).exec();
-        const newDriver = {enabled:false};
-        Object.assign(driver, newDriver);
-        driver.save();
-        res.status(201).json(driver);
-    } catch (error) {
-        return res.send("Chofer no encontrado");
-    }
+    const id = req.params.id;
+    const objectId = new mongoose.Types.ObjectId(id);
+    Driver.findByIdAndDelete(objectId,(err,data)=>{
+        if(err)
+            return res.send(err);
+        return res.send(data);
+    });
 }

@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+var fs = require('fs'); // to get data from html file
 
 const driver = require('./src/api/driver/driver.routes');
 const route = require('./src/api/route/route.routes');
@@ -28,5 +29,7 @@ async function main() {
 
 app.use('/api/drivers', driver);
 app.use('/api/route', route);
-// app.use('/api', (err,res)=>res.send('Funciona'));
+
+app.cre
+ app.use('/', (err,res)=>res.send('Hellow world'));
 app.listen(port,()=>{console.log('Escucha en puerto:'+port)})
